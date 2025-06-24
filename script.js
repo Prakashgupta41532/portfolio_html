@@ -101,13 +101,40 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(section);
   });
   
-  // Add a subtle parallax effect to the hero section
+  // Add a subtle parallax effect to the hero section and interactive blob movement
   const hero = document.querySelector('.hero');
+  const blob = document.querySelector('.blob');
+  const profileImage = document.querySelector('.profile-image');
+  
   if (hero) {
     window.addEventListener('scroll', () => {
       const scrollPosition = window.scrollY;
       hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
     });
+    
+    // Interactive blob movement with mouse
+    if (blob && profileImage) {
+      hero.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const rect = hero.getBoundingClientRect();
+        const x = clientX - rect.left; // x position within the element
+        const y = clientY - rect.top;  // y position within the element
+        
+        // Calculate movement based on mouse position (subtle effect)
+        const moveX = (x - rect.width / 2) / 30;
+        const moveY = (y - rect.height / 2) / 30;
+        
+        // Apply movement to blob and image with different intensities
+        blob.style.transform = `translate(${moveX * 1.2}px, ${moveY * 1.2}px)`;
+        profileImage.style.transform = `translate(${moveX * 0.8}px, ${moveY * 0.8}px)`;
+      });
+      
+      // Reset position when mouse leaves
+      hero.addEventListener('mouseleave', () => {
+        blob.style.transform = 'translate(0, 0)';
+        profileImage.style.transform = 'translate(0, 0)';
+      });
+    }
   }
   
   // Add typing animation to the hero title
