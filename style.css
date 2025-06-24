@@ -179,8 +179,8 @@
   }
 
   .profile-image img {
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 120%;
     object-fit: cover;
     object-position: top center;
     filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
@@ -314,6 +314,36 @@
     padding-left: 1.5rem;
   }
   
+  /* About Section */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .about-buttons {
+    margin-top: 1.5rem;
+  }
+
+  .about-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .about-buttons .btn::before {
+    content: '\f019'; /* Font Awesome download icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+
   /* Project */
   .project {
     margin-top: 1rem;
